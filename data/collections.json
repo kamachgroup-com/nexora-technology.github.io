@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Gaming Core",
+    "eyebrow": "PLAY WITHOUT COMPROMISE",
+    "text": "Performance desktops, displays and peripherals for immersive gaming setups.",
+    "category": "Computers"
+  },
+  {
+    "name": "Creator Studio",
+    "eyebrow": "MAKE MORE",
+    "text": "Workstations, high-memory systems and displays for demanding creative workflows.",
+    "category": "Computers"
+  },
+  {
+    "name": "Mobile Work",
+    "eyebrow": "POWER THAT TRAVELS",
+    "text": "Laptops and accessories for focused work wherever the day takes you.",
+    "category": "Laptops"
+  },
+  {
+    "name": "Desk Essentials",
+    "eyebrow": "THE DAILY SETUP",
+    "text": "Monitors, keyboards, mice and connectivity essentials for modern desks.",
+    "category": "Peripherals"
+  }
+]

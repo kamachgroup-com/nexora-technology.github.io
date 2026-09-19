@@ -1,26 +1,18 @@
-# NEXORA Content Inventory
+# NEXORA V2 Content Inventory
 
-## Storefront
-- Hero
-- Trust bar
-- 6 category destinations
-- Custom PC section
-- 12 featured products
-- 2 promotional panels
-- 4 trust metrics
+- 18 product records
+- 6 categories
+- 4 curated collections
+- 3 deal/upgrade modules
+- 3 customer-voice entries
 - 6 journal entries
 - 6 FAQ entries
+- Homepage hero and command bar
+- PC Builder
+- Search and sort
+- Wishlist
+- Compare tray
+- Persistent bag
 - Support center
 - Newsletter
 - Full footer
-
-## Interactive
-- Product search
-- Category filtering
-- Product quick view
-- Add to bag
-- Quantity controls
-- Persistent local cart
-- Order request email
-- FAQ accordions
-- Newsletter confirmation

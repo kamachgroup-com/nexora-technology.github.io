@@ -1,79 +1,42 @@
-const state={products:[],categories:[],journal:[],faq:[],filter:"All",search:"",cart:JSON.parse(localStorage.getItem("nexora-cart")||"[]")};
-
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const money=n=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(n);
-
-async function loadData(){
-  const [p,c,j,f]=await Promise.all([
-    fetch("data/products.json").then(r=>r.json()),
-    fetch("data/categories.json").then(r=>r.json()),
-    fetch("data/journal.json").then(r=>r.json()),
-    fetch("data/faq.json").then(r=>r.json())
-  ]);
-  state.products=p;state.categories=c;state.journal=j;state.faq=f;
-  renderCategories();renderFilters();renderProducts();renderJournal();renderFaq();renderCart();
+const state={products:[],categories:[],collections:[],journal:[],faq:[],reviews:[],deals:[],filter:"All",search:"",sort:"featured",cart:JSON.parse(localStorage.getItem("nx-cart")||"[]"),wishlist:JSON.parse(localStorage.getItem("nx-wish")||"[]"),compare:JSON.parse(localStorage.getItem("nx-compare")||"[]")};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)], money=n=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(n);
+async function load(){
+ const files=await Promise.all(["products","categories","collections","journal","faq","reviews","deals"].map(n=>fetch(`data/${n}.json`).then(r=>r.json())));
+ [state.products,state.categories,state.collections,state.journal,state.faq,state.reviews,state.deals]=files;
+ renderAll();
 }
-function renderCategories(){
-  $("#categoryGrid").innerHTML=state.categories.map(c=>`<article class="categoryCard" data-cat="${c.name}"><img src="${c.image}" alt="${c.name}"><div class="catText"><h3>${c.name}</h3><p>${c.text}</p><small>${c.count} products →</small></div></article>`).join("");
-  $$(".categoryCard").forEach(x=>x.onclick=()=>setFilter(x.dataset.cat));
-}
-function renderFilters(){
-  const cats=["All",...state.categories.map(c=>c.name)];
-  $("#filters").innerHTML=cats.map(c=>`<button class="filter ${state.filter===c?"active":""}" data-filter="${c}">${c}</button>`).join("");
-  $$(".filter").forEach(b=>b.onclick=()=>setFilter(b.dataset.filter));
-}
-function visibleProducts(){
-  return state.products.filter(p=>{
-    const okCat=state.filter==="All"||p.category===state.filter;
-    const hay=`${p.name} ${p.category} ${p.short} ${p.description}`.toLowerCase();
-    return okCat && (!state.search||hay.includes(state.search.toLowerCase()));
-  });
-}
-function renderProducts(){
-  const items=visibleProducts();
-  $("#productGrid").innerHTML=items.length?items.map(p=>`
-  <article class="product">
-    <div class="productMedia" data-view="${p.id}"><img src="${p.image}" alt="${p.name}" loading="lazy"><span class="badge">${p.badge}</span></div>
-    <div class="productBody"><span class="cat">${p.category}</span><h3>${p.name}</h3><div class="rating">★★★★★ <span>${p.rating} · ${p.reviews} reviews</span></div><p>${p.short}</p>
-    <div class="priceRow"><div><span class="price">${money(p.price)}</span><span class="old">${money(p.oldPrice)}</span></div><button class="add" data-add="${p.id}">Add</button></div></div>
-  </article>`).join(""):`<div style="grid-column:1/-1;padding:50px;text-align:center">No products match your search.</div>`;
-  $$("[data-view]").forEach(el=>el.onclick=()=>openProduct(el.dataset.view));
-  $$("[data-add]").forEach(el=>el.onclick=e=>{e.stopPropagation();addToCart(el.dataset.add)});
-}
-function setFilter(f){state.filter=f;state.search="";$("#search").value="";renderFilters();renderProducts();document.querySelector("#products").scrollIntoView({behavior:"smooth",block:"start"})}
-function openProduct(id){
-  const p=state.products.find(x=>x.id===id); if(!p)return;
-  $("#modalContent").innerHTML=`<div class="modalContent"><img class="modalImg" src="${p.image}" alt="${p.name}"><div class="modalInfo"><span class="eyebrow dark">${p.category}</span><h2>${p.name}</h2><div class="rating">★★★★★ ${p.rating} · ${p.reviews} reviews</div><p>${p.description}</p><ul class="specs">${p.specs.map(s=>`<li>${s}</li>`).join("")}</ul><div style="font-size:28px;font-weight:800;margin:24px 0">${money(p.price)} <span class="old">${money(p.oldPrice)}</span></div><button class="primary" style="width:100%" data-modal-add="${p.id}">Add to Bag →</button></div></div>`;
-  $("#modal").classList.add("open");$("[data-modal-add]").onclick=()=>{addToCart(id);$("#modal").classList.remove("open")};
-}
-function addToCart(id){const p=state.products.find(x=>x.id===id);const row=state.cart.find(x=>x.id===id);if(row)row.qty++;else state.cart.push({id,qty:1});persist();renderCart();toast(`${p.name} added to your bag.`)}
-function changeQty(id,delta){const row=state.cart.find(x=>x.id===id);if(!row)return;row.qty+=delta;if(row.qty<=0)state.cart=state.cart.filter(x=>x.id!==id);persist();renderCart()}
-function persist(){localStorage.setItem("nexora-cart",JSON.stringify(state.cart))}
-function renderCart(){
-  const count=state.cart.reduce((a,x)=>a+x.qty,0);$("#cartCount").textContent=count;
-  const items=state.cart.map(x=>{const p=state.products.find(y=>y.id===x.id);return p?`<div class="cartItem"><img src="${p.image}" alt="${p.name}"><div><h4>${p.name}</h4><p>${money(p.price)} each</p><div class="qty"><button data-q="${p.id}" data-d="-1">−</button><b>${x.qty}</b><button data-q="${p.id}" data-d="1">+</button></div></div><strong>${money(p.price*x.qty)}</strong></div>`:""}).join("");
-  $("#cartItems").innerHTML=items||`<p style="color:#667887;padding:30px 0">Your bag is empty. Explore the catalog and add something you like.</p>`;
-  const total=state.cart.reduce((a,x)=>{const p=state.products.find(y=>y.id===x.id);return a+(p?p.price*x.qty:0)},0);$("#cartTotal").textContent=money(total);
-  $$("[data-q]").forEach(b=>b.onclick=()=>changeQty(b.dataset.q,+b.dataset.d));
-}
-function renderJournal(){ $("#journalGrid").innerHTML=state.journal.map(j=>`<article class="journalCard"><span class="tag">${j.tag}</span><h3>${j.title}</h3><p>${j.text}</p><time>${j.date}</time></article>`).join("") }
-function renderFaq(){ $("#faqList").innerHTML=state.faq.map((f,i)=>`<div class="faqItem"><button class="faqQ">${f.q}<span>+</span></button><div class="faqA">${f.a}</div></div>`).join(""); $$(".faqQ").forEach(b=>b.onclick=()=>b.parentElement.classList.toggle("open"))}
-function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2400)}
-function scrollToSel(sel){const el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})}
-
-document.addEventListener("click",e=>{
-  const cat=e.target.closest("[data-category]");if(cat){e.preventDefault();setFilter(cat.dataset.category);return}
-  const sc=e.target.closest("[data-scroll]");if(sc){e.preventDefault();scrollToSel(sc.dataset.scroll)}
-});
-$("#cartBtn").onclick=()=>$("#drawer").classList.add("open");$("#closeCart").onclick=()=>$("#drawer").classList.remove("open");$("#drawer").onclick=e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove("open")};
+function renderAll(){renderCollections();renderFilters();renderProducts();renderDeals();renderReviews();renderJournal();renderFaq();renderCompare();renderCart();renderWishlist();counts()}
+function counts(){$("#cartCount").textContent=state.cart.reduce((a,x)=>a+x.qty,0);$("#wishCount").textContent=state.wishlist.length;$("#compareCount").textContent=state.compare.length}
+function renderCollections(){$("#collectionGrid").innerHTML=state.collections.map((c,i)=>{const img=state.categories.find(x=>x.name===c.category)?.image||"assets/categories/computers.jpg";return `<article class="collection" data-category="${c.category}"><img src="${img}" alt="${c.name}"><div class="collectionText"><p class="eyebrow">${c.eyebrow}</p><h3>${c.name}</h3><p>${c.text}</p></div></article>`}).join("");$$(".collection").forEach(x=>x.onclick=()=>setFilter(x.dataset.category))}
+function renderFilters(){const cats=["All",...state.categories.map(x=>x.name)];$("#filters").innerHTML=cats.map(c=>`<button class="filter ${state.filter===c?"active":""}" data-filter="${c}">${c}</button>`).join("");$$(".filter").forEach(b=>b.onclick=()=>setFilter(b.dataset.filter))}
+function visible(){let arr=state.products.filter(p=>{const cat=state.filter==="All"||p.category===state.filter;const text=`${p.name} ${p.category} ${p.short} ${p.description}`.toLowerCase();return cat&&(!state.search||text.includes(state.search.toLowerCase()))});if(state.sort==="priceLow")arr.sort((a,b)=>a.price-b.price);if(state.sort==="priceHigh")arr.sort((a,b)=>b.price-a.price);if(state.sort==="rating")arr.sort((a,b)=>b.rating-a.rating);return arr}
+function renderProducts(){const arr=visible();$("#productGrid").innerHTML=arr.length?arr.map(p=>`<article class="product"><div class="productMedia" data-view="${p.id}"><img src="${p.image}" alt="${p.name}" loading="lazy"><span class="badge">${p.badge}</span><button class="heart ${state.wishlist.includes(p.id)?"saved":""}" data-wish="${p.id}" aria-label="Save ${p.name}">♡</button></div><div class="productBody"><span class="cat">${p.category}</span><h3>${p.name}</h3><div class="rating">★★★★★ ${p.rating} · ${p.reviews} reviews</div><p>${p.short}</p><div class="priceRow"><div><span class="price">${money(p.price)}</span><span class="old">${money(p.oldPrice)}</span></div><button class="add" data-add="${p.id}">Add</button></div><div class="miniActions"><button data-compare="${p.id}">${state.compare.includes(p.id)?"✓ Added":"＋ Compare"}</button><button data-view2="${p.id}">Quick view</button></div></div></article>`).join(""):`<div style="grid-column:1/-1;padding:55px;text-align:center;color:#71818d">No products match that search.</div>`;
+$$("[data-view]").forEach(x=>x.onclick=()=>openProduct(x.dataset.view));$$("[data-view2]").forEach(x=>x.onclick=()=>openProduct(x.dataset.view2));$$("[data-add]").forEach(x=>x.onclick=e=>{e.stopPropagation();addCart(x.dataset.add)});$$("[data-wish]").forEach(x=>x.onclick=e=>{e.stopPropagation();toggleWish(x.dataset.wish)});$$("[data-compare]").forEach(x=>x.onclick=e=>{e.stopPropagation();toggleCompare(x.dataset.compare)})}
+function setFilter(f){state.filter=f;renderFilters();renderProducts();scrollTo("#products")}
+function openProduct(id){const p=state.products.find(x=>x.id===id);if(!p)return;$("#modalContent").innerHTML=`<div class="modalContent"><img class="modalImg" src="${p.image}" alt="${p.name}"><div class="modalInfo"><p class="eyebrow dark">${p.category} / ${p.badge}</p><h2>${p.name}</h2><div class="rating">★★★★★ ${p.rating} · ${p.reviews} reviews</div><p>${p.description}</p><ul class="specs">${p.specs.map(s=>`<li>${s}</li>`).join("")}</ul><div class="modalPrice">${money(p.price)} <span class="old">${money(p.oldPrice)}</span></div><button class="primary" style="width:100%" data-modal-add="${p.id}">Add to Bag →</button><div class="miniActions"><button data-modal-wish="${p.id}">♡ Save to wishlist</button><button data-modal-compare="${p.id}">＋ Compare</button></div></div></div>`;$("#modal").classList.add("open");$("[data-modal-add]").onclick=()=>{addCart(id);$("#modal").classList.remove("open")};$("[data-modal-wish]").onclick=()=>toggleWish(id);$("[data-modal-compare]").onclick=()=>toggleCompare(id)}
+function addCart(id){const row=state.cart.find(x=>x.id===id);if(row)row.qty++;else state.cart.push({id,qty:1});save();renderCart();counts();toast("Added to your NEXORA bag.")}
+function changeQty(id,d){const r=state.cart.find(x=>x.id===id);if(!r)return;r.qty+=d;if(r.qty<=0)state.cart=state.cart.filter(x=>x.id!==id);save();renderCart();counts()}
+function save(){localStorage.setItem("nx-cart",JSON.stringify(state.cart));localStorage.setItem("nx-wish",JSON.stringify(state.wishlist));localStorage.setItem("nx-compare",JSON.stringify(state.compare))}
+function renderCart(){const rows=state.cart.map(r=>{const p=state.products.find(x=>x.id===r.id);return p?`<div class="cartItem"><img src="${p.image}" alt="${p.name}"><div><h4>${p.name}</h4><p>${money(p.price)} each</p><div class="qty"><button data-qty="${p.id}" data-d="-1">−</button><b>${r.qty}</b><button data-qty="${p.id}" data-d="1">+</button></div></div><strong>${money(p.price*r.qty)}</strong></div>`:""}).join("");$("#cartItems").innerHTML=rows||`<p style="color:#71818d;padding:25px 0">Your bag is empty.</p>`;const total=state.cart.reduce((a,r)=>{const p=state.products.find(x=>x.id===r.id);return a+(p?p.price*r.qty:0)},0);$("#cartTotal").textContent=money(total);$$("[data-qty]").forEach(b=>b.onclick=()=>changeQty(b.dataset.qty,+b.dataset.d))}
+function toggleWish(id){state.wishlist=state.wishlist.includes(id)?state.wishlist.filter(x=>x!==id):[...state.wishlist,id];save();renderProducts();renderWishlist();counts();toast(state.wishlist.includes(id)?"Saved to wishlist.":"Removed from wishlist.")}
+function renderWishlist(){const arr=state.wishlist.map(id=>state.products.find(p=>p.id===id)).filter(Boolean);$("#wishItems").innerHTML=arr.length?arr.map(p=>`<div class="wishItem"><img src="${p.image}" alt="${p.name}"><div><h4>${p.name}</h4><p>${money(p.price)}</p><button class="add" data-wish-add="${p.id}">Add to bag</button></div></div>`).join(""):`<p style="color:#71818d">No saved products yet.</p>`;$$("[data-wish-add]").forEach(b=>b.onclick=()=>addCart(b.dataset.wishAdd))}
+function toggleCompare(id){if(state.compare.includes(id))state.compare=state.compare.filter(x=>x!==id);else{if(state.compare.length>=3){toast("Compare up to three products.");return}state.compare.push(id)}save();renderProducts();renderCompare();counts();scrollTo("#compareSection")}
+function renderCompare(){const arr=state.compare.map(id=>state.products.find(p=>p.id===id)).filter(Boolean);if(!arr.length){$("#compareArea").innerHTML=`<div class="compareEmpty">Your comparison tray is waiting for products.</div>`;return}const cols=arr.map(p=>`<th>${p.name}<br><small>${money(p.price)}</small></th>`).join("");const rows=[["Category",...arr.map(p=>p.category)],["Rating",...arr.map(p=>`${p.rating} / 5 (${p.reviews})`)],["Key specs",...arr.map(p=>p.specs.join(" · "))],["Description",...arr.map(p=>p.short)]].map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("");$("#compareArea").innerHTML=`<table class="compareTable"><tr><th>Attribute</th>${cols}</tr>${rows}</table>`}
+function renderDeals(){$("#dealGrid").innerHTML=state.deals.map(d=>`<article class="deal"><p class="eyebrow">${d.label}</p><h3>${d.title}</h3><p>${d.text}</p><button class="outline" data-category="${d.category}">Explore ${d.category} →</button></article>`).join("")}
+function renderReviews(){$("#reviewGrid").innerHTML=state.reviews.map(r=>`<article class="review"><p>“${r.quote}”</p><b>${r.name}</b><span>${r.role}</span></article>`).join("")}
+function renderJournal(){$("#journalGrid").innerHTML=state.journal.map(j=>`<article class="journalCard"><span class="tag">${j.tag}</span><h3>${j.title}</h3><p>${j.text}</p><time>${j.date}</time></article>`).join("")}
+function renderFaq(){$("#faqList").innerHTML=state.faq.map(f=>`<div class="faqItem"><button class="faqQ">${f.q}<span>+</span></button><div class="faqA">${f.a}</div></div>`).join("");$$(".faqQ").forEach(b=>b.onclick=()=>b.parentElement.classList.toggle("open"))}
+function scrollTo(sel){const el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})}
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+function builder(){const use=$("#useCase").value,budget=$("#budget").value;const map={Gaming:"performance-first desktop with a dedicated GPU, fast NVMe storage and a high-refresh display", "Creator / 3D":"high-memory workstation with a strong CPU, dedicated graphics and fast storage","Work & Productivity":"balanced laptop or desktop, QHD display and quiet peripherals","Everyday":"efficient desktop or laptop, practical display and comfortable peripherals"};$("#buildResult").textContent=`Starting point: ${map[use]}. Budget target: ${budget}. Use the catalog to refine the setup.`}
+document.addEventListener("click",e=>{const c=e.target.closest("[data-category]");if(c){e.preventDefault();setFilter(c.dataset.category);return}const s=e.target.closest("[data-scroll]");if(s){e.preventDefault();scrollTo(s.dataset.scroll)}});
+$("#cartBtn").onclick=()=>$("#drawer").classList.add("open");$("#closeDrawer").onclick=()=>$("#drawer").classList.remove("open");$("#drawer").onclick=e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove("open")};
+$("#wishBtn").onclick=()=>$("#wishDrawer").classList.add("open");$("#closeWish").onclick=()=>$("#wishDrawer").classList.remove("open");$("#wishDrawer").onclick=e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove("open")};
+$("#compareBtn").onclick=()=>scrollTo("#compareSection");$("#clearCompare").onclick=()=>{state.compare=[];save();renderProducts();renderCompare();counts()};
 $("#closeModal").onclick=()=>$("#modal").classList.remove("open");$("#modal").onclick=e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove("open")};
-$("#search").addEventListener("input",e=>{state.search=e.target.value;state.filter="All";renderFilters();renderProducts()});
-$("#searchBtn").onclick=()=>scrollToSel("#products");
-$("#newsletterForm").onsubmit=e=>{e.preventDefault();$("#newsletterMsg").textContent="Thanks — you’re on the NEXORA list.";e.target.reset()};
-$("#checkout").onclick=()=>{
-  if(!state.cart.length){toast("Your bag is empty.");return}
-  const lines=state.cart.map(x=>{const p=state.products.find(y=>y.id===x.id);return `${x.qty} × ${p.name} — ${money(p.price*x.qty)}`}).join("%0D%0A");
-  const total=state.cart.reduce((a,x)=>{const p=state.products.find(y=>y.id===x.id);return a+p.price*x.qty},0);
-  location.href=`mailto:support@nexora-tech.com?subject=NEXORA%20Order%20Request&body=Hello%20NEXORA%20Support,%0D%0A%0D%0AI'd%20like%20to%20request%20an%20order:%0D%0A%0D%0A${lines}%0D%0A%0D%0ASubtotal:%20${money(total)}`;
-};
-loadData().catch(err=>{console.error(err);$("#productGrid").innerHTML="<p>Store data could not be loaded. Check that the ZIP contents were uploaded to the repository root.</p>"});
+$("#search").oninput=e=>{state.search=e.target.value;state.filter="All";renderFilters();renderProducts()};$("#sort").onchange=e=>{state.sort=e.target.value;renderProducts()};
+document.addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();$("#search").focus()}if(e.key==="Escape"){$("#modal").classList.remove("open");$("#drawer").classList.remove("open");$("#wishDrawer").classList.remove("open")}});
+$("#newsletterForm").onsubmit=e=>{e.preventDefault();$("#newsletterMsg").textContent="You’re on the NEXORA Signal list.";e.target.reset()};
+$("#buildBtn").onclick=builder;
+$("#checkout").onclick=()=>{if(!state.cart.length){toast("Your bag is empty.");return}const lines=state.cart.map(r=>{const p=state.products.find(x=>x.id===r.id);return `${r.qty} x ${p.name} — ${money(p.price*r.qty)}`}).join("%0D%0A");const total=state.cart.reduce((a,r)=>{const p=state.products.find(x=>x.id===r.id);return a+p.price*r.qty},0);location.href=`mailto:support@nexora-tech.com?subject=NEXORA%20Order%20Request&body=Hello%20NEXORA%20Support,%0D%0A%0D%0AI'd%20like%20to%20request:%0D%0A${lines}%0D%0A%0D%0ASubtotal:%20${money(total)}`};
+load().catch(err=>{console.error(err);$("#productGrid").innerHTML="<p>Store data could not be loaded. Please verify the repository root contains the complete project.</p>"});

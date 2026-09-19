@@ -873,3 +873,39 @@ The information, products, prices, contact details, and technical examples used 
 <p align="center">
   <strong>© 2026 NEXORA Technology. All rights reserved.</strong>
 </p>
+
+
+# NEXORA V2 Storefront
+
+The V2 storefront expands the original concept into a richer retail experience with 18 products, curated collections, a PC builder, wishlist, comparison tray, product quick views, richer support content, customer-voice content, deal modules, search, sorting, persistent cart behavior, and an expanded content/data architecture.
+
+## V2 Interactive Features
+
+- Product search with keyboard shortcut (`Ctrl/Cmd + K`)
+- Category filtering
+- Product sorting
+- Product quick view
+- Wishlist saved in local browser storage
+- Product comparison tray for up to three items
+- Persistent shopping bag
+- Quantity controls
+- PC builder starting-point generator
+- FAQ accordions
+- Newsletter confirmation
+- Order request email flow
+- Responsive layouts
+
+## V2 Content Expansion
+
+- 18 product records
+- 6 categories
+- 4 curated collections
+- 3 upgrade/deal modules
+- 6 journal entries
+- 6 FAQ entries
+- 3 customer-voice entries
+- Expanded documentation and content inventory
+
+## Commercial Note
+
+This is still a static storefront concept. Prices, reviews, contact details, inventory, shipping terms, warranties, policies and product specifications must be verified and connected to production systems before commercial use.

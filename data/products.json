@@ -226,5 +226,119 @@
       "USB connectivity"
     ],
     "description": "An immersive ultrawide concept for users who want more horizontal workspace for timelines, dashboards, games and multitasking."
+  },
+  {
+    "id": "nx-creator-z5",
+    "name": "NEXORA Creator Z5 Workstation",
+    "category": "Computers",
+    "price": 2199,
+    "oldPrice": 2399,
+    "badge": "Creator",
+    "image": "assets/products/gaming-pc.jpg",
+    "rating": 4.9,
+    "reviews": 67,
+    "short": "High-memory workstation concept for editing, 3D and heavy multitasking.",
+    "specs": [
+      "High-core CPU",
+      "64 GB memory",
+      "2 TB NVMe",
+      "Dedicated graphics"
+    ],
+    "description": "A workstation-focused desktop concept for creators who need sustained performance across editing, design, 3D and large multitasking sessions."
+  },
+  {
+    "id": "nx-air-15",
+    "name": "NEXORA Air 15 Performance Laptop",
+    "category": "Laptops",
+    "price": 1299,
+    "oldPrice": 1399,
+    "badge": "Popular",
+    "image": "assets/products/laptop.jpg",
+    "rating": 4.8,
+    "reviews": 89,
+    "short": "A larger performance laptop with a crisp display and responsive keyboard.",
+    "specs": [
+      "15-inch class display",
+      "32 GB memory",
+      "1 TB NVMe",
+      "Performance cooling"
+    ],
+    "description": "A versatile performance laptop concept balancing portability with the power needed for demanding productivity, creative work and entertainment."
+  },
+  {
+    "id": "nx-vision-24",
+    "name": "NEXORA Vision 24 FHD",
+    "category": "Monitors",
+    "price": 189,
+    "oldPrice": 219,
+    "badge": "Essential",
+    "image": "assets/products/monitor.jpg",
+    "rating": 4.7,
+    "reviews": 103,
+    "short": "Clean 24-inch display for compact desks and everyday productivity.",
+    "specs": [
+      "24-inch class",
+      "Full HD",
+      "High refresh class",
+      "Slim profile"
+    ],
+    "description": "A compact display concept for workstations, study desks and secondary-monitor setups where clarity and space efficiency matter."
+  },
+  {
+    "id": "nx-mesh-900",
+    "name": "NEXORA Mesh ATX Airflow Case",
+    "category": "Components",
+    "price": 109,
+    "oldPrice": 129,
+    "badge": "Airflow",
+    "image": "assets/products/gaming-pc.jpg",
+    "rating": 4.8,
+    "reviews": 44,
+    "short": "Mesh-front chassis concept built around clean airflow and easy upgrades.",
+    "specs": [
+      "ATX support",
+      "Mesh front",
+      "Tool-friendly layout",
+      "Multiple fan mounts"
+    ],
+    "description": "A modern chassis concept focused on practical airflow, clean cable routing and easy component access for future upgrades."
+  },
+  {
+    "id": "nx-sonic-h7",
+    "name": "NEXORA Sonic H7 Wireless Headset",
+    "category": "Peripherals",
+    "price": 99,
+    "oldPrice": 119,
+    "badge": "Audio",
+    "image": "assets/products/keyboard.jpg",
+    "rating": 4.7,
+    "reviews": 76,
+    "short": "Wireless headset concept with cushioned fit and focused game audio.",
+    "specs": [
+      "Wireless audio",
+      "Noise-isolating cushions",
+      "Detachable microphone",
+      "Long-session comfort"
+    ],
+    "description": "A comfortable headset concept for gaming, calls and media, designed around focused audio and a clean desktop aesthetic."
+  },
+  {
+    "id": "nx-dock-pro",
+    "name": "NEXORA Dock Pro 11-in-1",
+    "category": "Accessories",
+    "price": 89,
+    "oldPrice": 109,
+    "badge": "Workstation",
+    "image": "assets/products/mouse.jpg",
+    "rating": 4.8,
+    "reviews": 58,
+    "short": "Multi-port desktop dock for laptops, displays and everyday connectivity.",
+    "specs": [
+      "11-in-1 class",
+      "Display output",
+      "USB expansion",
+      "Ethernet"
+    ],
+    "description": "A connectivity hub concept for turning a laptop into a practical desktop workstation with displays, storage and accessories."
   }
 ]

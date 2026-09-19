@@ -1,47 +1,60 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="NEXORA Technology — computers, laptops, monitors, PC components and premium technology essentials.">
-<meta name="theme-color" content="#06111f">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="NEXORA Technology — premium computers, laptops, monitors, PC components and peripherals.">
+<meta name="theme-color" content="#050b12">
 <title>NEXORA Technology — Build a Smarter Tomorrow</title>
 <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="topbar"><div>⚡ Free shipping on orders over $99</div><div class="toplinks"><span>30-day returns</span><span>Secure payments</span><span>Support: 1-800-555-0188</span></div></div>
+<div class="announcement"><span>⚡ NEXORA V2</span><b>Technology without limits.</b><span>Free shipping on orders over $99</span><span>30-day returns</span><span>Support 1-800-555-0188</span></div>
 <header class="header">
   <a class="brand" href="#top"><img src="assets/brand/logo.png" alt="NEXORA Technology"></a>
-  <div class="searchWrap"><input id="search" type="search" placeholder="Search laptops, monitors, components and more..." aria-label="Search products"><button id="searchBtn">Search</button></div>
-  <div class="headActions"><button data-scroll="#support">Support</button><button data-scroll="#wishlist">♡ Wishlist</button><button id="cartBtn" class="cartBtn">🛒 <span id="cartCount">0</span></button></div>
+  <div class="search"><span>⌕</span><input id="search" type="search" placeholder="Search products, categories or guides..." aria-label="Search NEXORA"><kbd>⌘ K</kbd></div>
+  <nav class="quick"><button data-scroll="#support">Support</button><button id="wishBtn">♡ <span id="wishCount">0</span></button><button id="compareBtn">Compare <span id="compareCount">0</span></button><button id="cartBtn">Bag <span id="cartCount">0</span></button></nav>
 </header>
 <nav class="nav"><div class="navInner">
-  <button data-category="Computers">Computers</button><button data-category="Laptops">Laptops</button><button data-category="Monitors">Monitors</button><button data-category="Components">Components</button><button data-category="Peripherals">Peripherals</button><button data-category="Accessories">Accessories</button><button data-scroll="#build">Build Your PC</button><button data-scroll="#journal">Journal</button><button data-scroll="#support">Support</button>
+<button data-category="Computers">Computers</button><button data-category="Laptops">Laptops</button><button data-category="Monitors">Monitors</button><button data-category="Components">Components</button><button data-category="Peripherals">Peripherals</button><button data-category="Accessories">Accessories</button><button data-scroll="#collections">Collections</button><button data-scroll="#build">PC Builder</button><button data-scroll="#journal">Journal</button><button data-scroll="#support">Support</button>
 </div></nav>
+
 <main id="top">
-<section class="hero">
-  <div class="heroCopy"><p class="eyebrow">TECHNOLOGY WITHOUT LIMITS</p><h1>Power your<br><span>potential.</span></h1><p>Computers, laptops, monitors and PC components for a smarter tomorrow.</p><div class="heroBtns"><button class="primary" data-scroll="#products">Shop Now →</button><button class="ghost" data-scroll="#build">Build Your PC</button></div><div class="trust"><span>✓ Top brands</span><span>✓ Fast shipping</span><span>✓ Secure checkout</span><span>✓ Expert support</span></div></div>
-  <div class="heroMedia"><img src="assets/categories/hero-gaming.jpg" alt="Premium NEXORA gaming workstation"></div>
+<section class="heroV2">
+  <div class="heroText"><div class="eyebrow">NEXORA / SYSTEM 02</div><h1>Build a smarter<br><span>tomorrow.</span></h1><p>High-performance technology, carefully presented. Find the computer, display, component or peripheral that fits the way you work and play.</p><div class="actions"><button class="primary" data-scroll="#products">Explore the store →</button><button class="outline" data-scroll="#build">Start a PC build</button></div><div class="heroMeta"><span><b>01</b> Curated hardware</span><span><b>02</b> Clear specifications</span><span><b>03</b> Human support</span></div></div>
+  <div class="heroVisual"><img src="assets/categories/hero-gaming.jpg" alt="NEXORA premium technology setup"><div class="heroOverlay"><span>FEATURED SETUP</span><strong>POWER / PLAY / CREATE</strong></div></div>
 </section>
-<section class="ticker"><div>ENGINEERED FOR PERFORMANCE</div><div>BUILT FOR CREATORS</div><div>READY FOR GAMERS</div><div>DESIGNED FOR EVERYDAY</div></section>
-<section class="section" id="categories"><div class="sectionHead"><div><p class="eyebrow dark">SHOP BY CATEGORY</p><h2>Build the setup you want.</h2></div><button class="textBtn" data-scroll="#products">View all products →</button></div><div id="categoryGrid" class="categoryGrid"></div></section>
-<section class="featureSplit" id="build"><div class="featureImage"><img src="assets/products/gaming-pc.jpg" alt="NEXORA performance desktop"></div><div class="featureCopy"><p class="eyebrow">NEXORA CUSTOM</p><h2>Build a PC around the way you work and play.</h2><p>Start with performance, choose your priorities, then shape the rest of your setup around them. Our configuration experience is designed to make component decisions easier to understand.</p><div class="featureList"><div><b>01</b><span>Choose your performance target</span></div><div><b>02</b><span>Match components intelligently</span></div><div><b>03</b><span>Finish with the right peripherals</span></div></div><button class="primary" data-scroll="#products">Explore the catalog →</button></div></section>
-<section class="section" id="products"><div class="sectionHead"><div><p class="eyebrow dark">FEATURED PRODUCTS</p><h2>Technology worth putting on your desk.</h2></div><div class="filters" id="filters"></div></div><div id="productGrid" class="productGrid"></div></section>
-<section class="promoGrid"><article><img src="assets/products/laptop.jpg" alt="NEXORA laptop"><div><p class="eyebrow">WORK / CREATE</p><h3>Power that travels.</h3><p>Portable systems built for focused work and creative momentum.</p><button class="ghost darkBtn" data-category="Laptops">Shop laptops →</button></div></article><article><img src="assets/products/gpu.jpg" alt="NEXORA graphics card"><div><p class="eyebrow">PERFORMANCE</p><h3>Build beyond the basics.</h3><p>Components that turn a parts list into a serious machine.</p><button class="ghost darkBtn" data-category="Components">Shop components →</button></div></article></section>
-<section class="metrics"><div><strong>01</strong><span>Curated technology</span></div><div><strong>02</strong><span>Clear product information</span></div><div><strong>03</strong><span>Support when you need it</span></div><div><strong>04</strong><span>Built to scale</span></div></section>
-<section class="section journalSection" id="journal"><div class="sectionHead"><div><p class="eyebrow dark">THE NEXORA JOURNAL</p><h2>Guides for smarter decisions.</h2></div><button class="textBtn" data-scroll="#journalGrid">Explore journal →</button></div><div id="journalGrid" class="journalGrid"></div></section>
-<section class="faqSection" id="faq"><div class="faqIntro"><p class="eyebrow">NEED TO KNOW</p><h2>Questions, answered clearly.</h2><p>From buying your first PC to choosing a display, NEXORA keeps the important details close.</p></div><div id="faqList" class="faqList"></div></section>
-<section class="support" id="support"><div><p class="eyebrow">NEXORA SUPPORT</p><h2>Talk to a real support team.</h2><p>Questions about products, compatibility, orders or your next setup? Reach us Monday through Friday.</p></div><div class="supportCards"><a href="mailto:support@nexora-tech.com"><span>Email</span><b>support@nexora-tech.com</b></a><a href="tel:+18005550188"><span>Phone</span><b>1-800-555-0188</b></a><div><span>Hours</span><b>Mon–Fri · 9 AM–6 PM</b></div></div></section>
-<section class="newsletter"><div><p class="eyebrow dark">STAY IN THE LOOP</p><h2>New products. Useful guides. No noise.</h2><p>Join the NEXORA list for product drops, setup ideas and buying guides.</p></div><form id="newsletterForm"><input type="email" required placeholder="Your email address" aria-label="Email address"><button class="primary">Subscribe →</button><small id="newsletterMsg"></small></form></section>
+
+<section class="commandBar"><div><b>WHAT ARE YOU BUILDING?</b><span>Choose a direction and NEXORA will narrow the catalog.</span></div><div class="commandBtns"><button data-category="Computers">Performance</button><button data-category="Laptops">Mobile</button><button data-category="Components">Upgrade</button><button data-category="Peripherals">Desk</button></div></section>
+
+<section class="section" id="collections"><div class="sectionHead"><div><p class="eyebrow dark">CURATED COLLECTIONS</p><h2>Shop by the way you use technology.</h2></div><p class="sectionNote">Four focused routes through the NEXORA catalog.</p></div><div id="collectionGrid" class="collectionGrid"></div></section>
+
+<section class="builder" id="build"><div class="builderArt"><div class="orbit o1"></div><div class="orbit o2"></div><div class="chip">NX</div></div><div class="builderCopy"><p class="eyebrow">NEXORA PC BUILDER</p><h2>Start with a goal.<br>We’ll organize the parts.</h2><p>Choose a use case, a budget range and a performance direction. This front-end builder helps you explore a system before a production inventory and compatibility backend is connected.</p><div class="builderForm"><label>Use case<select id="useCase"><option>Gaming</option><option>Creator / 3D</option><option>Work & Productivity</option><option>Everyday</option></select></label><label>Budget<select id="budget"><option>Under $1,000</option><option>$1,000–$1,500</option><option>$1,500–$2,500</option><option>$2,500+</option></select></label><button id="buildBtn" class="primary">Generate a starting point →</button></div><div id="buildResult" class="buildResult"></div></div></section>
+
+<section class="section" id="products"><div class="sectionHead"><div><p class="eyebrow dark">THE CATALOG</p><h2>Hardware with a point of view.</h2><p class="sectionNote">Click any product image for a full product view. Add items to your bag, wishlist or comparison tray.</p></div><div class="catalogTools"><div id="filters" class="filters"></div><select id="sort"><option value="featured">Featured</option><option value="priceLow">Price: low to high</option><option value="priceHigh">Price: high to low</option><option value="rating">Highest rated</option></select></div></div><div id="productGrid" class="productGrid"></div></section>
+
+<section class="deals"><div class="dealHeader"><p class="eyebrow">CURRENTLY AT NEXORA</p><h2>Three ways to upgrade.</h2></div><div id="dealGrid" class="dealGrid"></div></section>
+
+<section class="section" id="compareSection"><div class="sectionHead"><div><p class="eyebrow dark">COMPARE</p><h2>Put the important details side by side.</h2><p class="sectionNote">Select up to three products from the catalog.</p></div><button class="textBtn" id="clearCompare">Clear comparison</button></div><div id="compareArea" class="compareArea"><div class="compareEmpty">Your comparison tray is waiting for products.</div></div></section>
+
+<section class="section reviews"><div class="sectionHead"><div><p class="eyebrow dark">CUSTOMER VOICE</p><h2>Designed around clarity.</h2></div></div><div id="reviewGrid" class="reviewGrid"></div></section>
+
+<section class="section" id="journal"><div class="sectionHead"><div><p class="eyebrow dark">THE NEXORA JOURNAL</p><h2>Learn before you buy.</h2></div><button class="textBtn">View all guides →</button></div><div id="journalGrid" class="journalGrid"></div></section>
+
+<section class="faqSection" id="faq"><div class="faqIntro"><p class="eyebrow">SUPPORT LIBRARY</p><h2>Good technology starts with good answers.</h2><p>Quick guidance for choosing hardware, understanding the catalog and preparing a future order.</p></div><div id="faqList" class="faqList"></div></section>
+
+<section class="support" id="support"><div><p class="eyebrow">NEXORA SUPPORT</p><h2>Questions about your next setup?</h2><p>Contact the NEXORA support desk for product questions, compatibility guidance and order assistance.</p><div class="supportStatus"><span></span> Support desk · Monday–Friday · 9 AM–6 PM</div></div><div class="supportGrid"><a href="mailto:support@nexora-tech.com"><small>EMAIL</small><strong>support@nexora-tech.com</strong><span>Send a message →</span></a><a href="tel:+18005550188"><small>PHONE</small><strong>1-800-555-0188</strong><span>Call support →</span></a><div><small>RETURNS</small><strong>30-day policy concept</strong><span>View return guidance</span></div><div><small>SHIPPING</small><strong>Orders over $99</strong><span>Free shipping concept</span></div></div></section>
+
+<section class="newsletter"><div><p class="eyebrow dark">NEXORA SIGNAL</p><h2>Useful technology, delivered occasionally.</h2><p>Product drops, setup guides and buying notes. No noisy daily emails.</p></div><form id="newsletterForm"><input required type="email" placeholder="Your email address" aria-label="Email"><button class="primary">Join Signal →</button><small id="newsletterMsg"></small></form></section>
 </main>
-<footer><div class="footerMain"><div><img src="assets/brand/logo.png" alt="NEXORA Technology" class="footerLogo"><p>Technology without limits.<br>Build a smarter tomorrow.</p></div><div><h4>Shop</h4><a data-category="Computers">Computers</a><a data-category="Laptops">Laptops</a><a data-category="Monitors">Monitors</a><a data-category="Components">Components</a></div><div><h4>Help</h4><a data-scroll="#support">Contact Support</a><a data-scroll="#faq">FAQ</a><a>Shipping</a><a>Returns</a></div><div><h4>Company</h4><a data-scroll="#journal">Journal</a><a>About NEXORA</a><a>Careers</a><a>Privacy</a></div><div><h4>Contact</h4><a href="mailto:support@nexora-tech.com">support@nexora-tech.com</a><a href="tel:+18005550188">1-800-555-0188</a><span>United States</span></div></div><div class="footerBottom"><span>© 2026 NEXORA Technology. All rights reserved.</span><span>Demo storefront — verify prices, policies and business information before launch.</span></div></footer>
-<div id="drawer" class="drawer"><div class="drawerPanel"><button class="close" id="closeCart">×</button><p class="eyebrow dark">YOUR BAG</p><h2>Ready when you are.</h2><div id="cartItems"></div><div class="cartSummary"><div><span>Subtotal</span><strong id="cartTotal">$0.00</strong></div><button id="checkout" class="primary">Prepare Order Request →</button><small>Checkout is a demo flow. No payment is collected.</small></div></div></div>
+
+<footer><div class="footerMain"><div><img src="assets/brand/logo.png" class="footerLogo" alt="NEXORA Technology"><p>Build a smarter tomorrow.<br>Computers, laptops, displays and components.</p></div><div><h4>Shop</h4><a data-category="Computers">Computers</a><a data-category="Laptops">Laptops</a><a data-category="Monitors">Monitors</a><a data-category="Components">Components</a></div><div><h4>Explore</h4><a data-scroll="#collections">Collections</a><a data-scroll="#build">PC Builder</a><a data-scroll="#compareSection">Compare</a><a data-scroll="#journal">Journal</a></div><div><h4>Help</h4><a data-scroll="#support">Support</a><a data-scroll="#faq">FAQ</a><a>Shipping</a><a>Returns</a></div><div><h4>Contact</h4><a href="mailto:support@nexora-tech.com">support@nexora-tech.com</a><a href="tel:+18005550188">1-800-555-0188</a><span>United States</span></div></div><div class="footerBottom"><span>© 2026 NEXORA Technology. All rights reserved.</span><span>Demo storefront · verify commercial information before launch.</span></div></footer>
+
+<div id="drawer" class="drawer"><div class="drawerPanel"><button class="close" id="closeDrawer">×</button><p class="eyebrow dark">YOUR NEXORA BAG</p><h2>Ready for the next build?</h2><div id="cartItems"></div><div class="cartSummary"><div><span>Subtotal</span><strong id="cartTotal">$0.00</strong></div><button id="checkout" class="primary">Prepare Order Request →</button><small>No payment is collected in this static demo.</small></div></div></div>
+<div id="wishDrawer" class="drawer"><div class="drawerPanel"><button class="close" id="closeWish">×</button><p class="eyebrow dark">WISHLIST</p><h2>Saved for later.</h2><div id="wishItems"></div></div></div>
 <div id="modal" class="modal"><div class="modalCard"><button class="close" id="closeModal">×</button><div id="modalContent"></div></div></div>
 <div id="toast" class="toast"></div>
 <script src="app.js"></script>
-</body>
-</html>
+</body></html>
