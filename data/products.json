@@ -1,0 +1,230 @@
+[
+  {
+    "id": "nx-core-x1",
+    "name": "NEXORA Core X1 Gaming PC",
+    "category": "Computers",
+    "price": 1499,
+    "oldPrice": 1699,
+    "badge": "Best Seller",
+    "image": "assets/products/gaming-pc.jpg",
+    "rating": 4.9,
+    "reviews": 128,
+    "short": "High-performance gaming desktop with a clean airflow-first chassis.",
+    "specs": [
+      "Ryzen 7-class CPU",
+      "32 GB DDR5",
+      "1 TB NVMe SSD",
+      "Triple-fan graphics"
+    ],
+    "description": "A balanced performance desktop built for modern gaming, streaming and demanding creative workloads. The airflow-focused chassis and blue-lit cooling system give it a premium desk presence."
+  },
+  {
+    "id": "nx-probook-14",
+    "name": "NEXORA ProBook 14",
+    "category": "Laptops",
+    "price": 999,
+    "oldPrice": 1099,
+    "badge": "New",
+    "image": "assets/products/laptop.jpg",
+    "rating": 4.8,
+    "reviews": 74,
+    "short": "Slim aluminum laptop for work, study and creative projects.",
+    "specs": [
+      "14-inch display",
+      "16 GB memory",
+      "512 GB NVMe",
+      "Backlit keyboard"
+    ],
+    "description": "A lightweight everyday laptop with a premium aluminum-style chassis, vivid display and enough performance for productivity, study, creative apps and travel."
+  },
+  {
+    "id": "nx-vision-27",
+    "name": "NEXORA Vision 27 QHD",
+    "category": "Monitors",
+    "price": 329,
+    "oldPrice": 379,
+    "badge": "Top Rated",
+    "image": "assets/products/monitor.jpg",
+    "rating": 4.9,
+    "reviews": 96,
+    "short": "27-inch QHD monitor with a clean borderless-inspired profile.",
+    "specs": [
+      "27-inch QHD",
+      "165 Hz class",
+      "1 ms class",
+      "Height-adjustable stand"
+    ],
+    "description": "A sharp, fast display designed for gaming and productivity. Its QHD resolution and high-refresh presentation make it a strong centerpiece for a modern workstation."
+  },
+  {
+    "id": "nx-graphix-gx",
+    "name": "NEXORA GX 780 Graphics Card",
+    "category": "Graphics Cards",
+    "price": 699,
+    "oldPrice": 749,
+    "badge": "Performance",
+    "image": "assets/products/gpu.jpg",
+    "rating": 4.8,
+    "reviews": 51,
+    "short": "Triple-fan graphics card with high-performance cooling architecture.",
+    "specs": [
+      "Triple-fan cooler",
+      "High-bandwidth memory",
+      "PCIe interface",
+      "Metal backplate"
+    ],
+    "description": "A performance-focused graphics card concept with a triple-fan thermal design, rigid metal styling and subtle blue illumination."
+  },
+  {
+    "id": "nx-strike-k1",
+    "name": "NEXORA Strike K1 Mechanical Keyboard",
+    "category": "Peripherals",
+    "price": 119,
+    "oldPrice": 139,
+    "badge": "Hot",
+    "image": "assets/products/keyboard.jpg",
+    "rating": 4.7,
+    "reviews": 83,
+    "short": "Full-size mechanical keyboard with blue backlighting and control dial.",
+    "specs": [
+      "Mechanical switches",
+      "Full-size layout",
+      "Blue illumination",
+      "Media dial"
+    ],
+    "description": "A substantial mechanical keyboard designed for long sessions, with tactile key travel, dedicated controls and a premium dark chassis."
+  },
+  {
+    "id": "nx-pulse-m1",
+    "name": "NEXORA Pulse M1 Wireless Mouse",
+    "category": "Peripherals",
+    "price": 69,
+    "oldPrice": 79,
+    "badge": "New",
+    "image": "assets/products/mouse.jpg",
+    "rating": 4.8,
+    "reviews": 61,
+    "short": "Ergonomic wireless mouse with precision control and blue accents.",
+    "specs": [
+      "Wireless connection",
+      "Precision sensor",
+      "Side buttons",
+      "Rechargeable battery"
+    ],
+    "description": "A responsive wireless mouse with ergonomic contours, textured side grip and low-latency controls for gaming and everyday work."
+  },
+  {
+    "id": "nx-build-board",
+    "name": "NEXORA Forge B650 Motherboard",
+    "category": "Components",
+    "price": 219,
+    "oldPrice": 239,
+    "badge": "Build",
+    "image": "assets/products/gpu.jpg",
+    "rating": 4.7,
+    "reviews": 42,
+    "short": "Modern enthusiast motherboard designed for balanced PC builds.",
+    "specs": [
+      "AM5 platform",
+      "DDR5 support",
+      "PCIe expansion",
+      "High-speed networking"
+    ],
+    "description": "A motherboard concept for modern performance builds, with a clean heatsink layout, expansion flexibility and connectivity for demanding setups."
+  },
+  {
+    "id": "nx-volt-850",
+    "name": "NEXORA Volt 850W Gold PSU",
+    "category": "Components",
+    "price": 139,
+    "oldPrice": 159,
+    "badge": "Efficient",
+    "image": "assets/products/gaming-pc.jpg",
+    "rating": 4.8,
+    "reviews": 37,
+    "short": "Efficient modular power foundation for performance PCs.",
+    "specs": [
+      "850 W class",
+      "80+ Gold class",
+      "Fully modular",
+      "Quiet fan profile"
+    ],
+    "description": "A dependable power platform concept for performance desktops, designed around efficient delivery, modular cabling and quiet operation."
+  },
+  {
+    "id": "nx-flux-32",
+    "name": "NEXORA Flux 32GB DDR5 Kit",
+    "category": "Components",
+    "price": 109,
+    "oldPrice": 129,
+    "badge": "Value",
+    "image": "assets/products/keyboard.jpg",
+    "rating": 4.7,
+    "reviews": 55,
+    "short": "32 GB DDR5 memory kit for multitasking and modern builds.",
+    "specs": [
+      "32 GB total",
+      "DDR5",
+      "Dual-channel kit",
+      "Heat spreaders"
+    ],
+    "description": "A 32 GB memory kit concept for modern desktops, aimed at gaming, productivity and creator workloads that benefit from responsive multitasking."
+  },
+  {
+    "id": "nx-speed-1tb",
+    "name": "NEXORA Speed 1TB NVMe SSD",
+    "category": "Storage",
+    "price": 89,
+    "oldPrice": 99,
+    "badge": "Fast",
+    "image": "assets/products/mouse.jpg",
+    "rating": 4.9,
+    "reviews": 112,
+    "short": "Fast 1 TB NVMe storage for operating systems and applications.",
+    "specs": [
+      "1 TB capacity",
+      "NVMe",
+      "PCIe interface",
+      "Low-profile heatsink"
+    ],
+    "description": "Fast solid-state storage designed to shorten boot times, accelerate application loading and give a modern PC a responsive feel."
+  },
+  {
+    "id": "nx-air-360",
+    "name": "NEXORA AirFlow 360 Cooler",
+    "category": "Cooling",
+    "price": 129,
+    "oldPrice": 149,
+    "badge": "Thermal",
+    "image": "assets/products/gaming-pc.jpg",
+    "rating": 4.6,
+    "reviews": 31,
+    "short": "360-class liquid cooling concept with coordinated blue illumination.",
+    "specs": [
+      "360 mm class",
+      "Three fans",
+      "Low-noise pump",
+      "Addressable lighting"
+    ],
+    "description": "A premium cooling solution concept for performance systems, pairing a large radiator with coordinated airflow and subtle blue lighting."
+  },
+  {
+    "id": "nx-view-ultra",
+    "name": "NEXORA UltraView 34",
+    "category": "Monitors",
+    "price": 579,
+    "oldPrice": 629,
+    "badge": "UltraWide",
+    "image": "assets/products/monitor.jpg",
+    "rating": 4.8,
+    "reviews": 48,
+    "short": "Immersive ultrawide display for gaming and multitasking.",
+    "specs": [
+      "34-inch ultrawide",
+      "3440 \u00d7 1440 class",
+      "High refresh",
+      "USB connectivity"
+    ],
+    "description": "An immersive ultrawide concept for users who want more horizontal workspace for timelines, dashboards, games and multitasking."
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "q": "Do you offer support before I choose a PC?",
+    "a": "Yes. NEXORA is designed around product guidance, compatibility questions and setup recommendations."
+  },
+  {
+    "q": "Can I build a custom PC?",
+    "a": "The storefront includes a Build Your PC experience concept. A production implementation can connect it to a real inventory and configuration backend."
+  },
+  {
+    "q": "Are the prices in this demo live?",
+    "a": "No. Product pricing in this project is demonstration content and must be verified before commercial publication."
+  },
+  {
+    "q": "Can I return an item?",
+    "a": "The storefront includes a 30-day returns concept. A real store should publish its verified return and warranty terms before launch."
+  },
+  {
+    "q": "Do you ship internationally?",
+    "a": "The demo focuses on US shipping. A production store should publish the exact regions, carriers and delivery estimates it supports."
+  },
+  {
+    "q": "How do I contact support?",
+    "a": "Use support@nexora-tech.com or 1-800-555-0188 during the listed support hours."
+  }
+]

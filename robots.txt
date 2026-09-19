@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kamachgroup-com.github.io/nexora-technology/sitemap.xml

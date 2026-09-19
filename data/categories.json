@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Computers",
+    "slug": "computers",
+    "image": "assets/categories/computers.jpg",
+    "count": 24,
+    "text": "Performance desktops and ready-to-run systems."
+  },
+  {
+    "name": "Laptops",
+    "slug": "laptops",
+    "image": "assets/categories/laptops.jpg",
+    "count": 31,
+    "text": "Portable power for work, study and creation."
+  },
+  {
+    "name": "Monitors",
+    "slug": "monitors",
+    "image": "assets/categories/monitors.jpg",
+    "count": 18,
+    "text": "Sharper displays for every kind of setup."
+  },
+  {
+    "name": "Components",
+    "slug": "components",
+    "image": "assets/categories/components.jpg",
+    "count": 64,
+    "text": "Build, upgrade and tune your next PC."
+  },
+  {
+    "name": "Peripherals",
+    "slug": "peripherals",
+    "image": "assets/categories/peripherals.jpg",
+    "count": 42,
+    "text": "Keyboards, mice, audio and more."
+  },
+  {
+    "name": "Accessories",
+    "slug": "accessories",
+    "image": "assets/categories/accessories.jpg",
+    "count": 57,
+    "text": "The details that complete your setup."
+  }
+]
